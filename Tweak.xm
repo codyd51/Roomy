@@ -1,21 +1,23 @@
+#import <CoreGraphics/CoreGraphics.h>
+
 //SBLockScreenNotificationTableView
+BOOL hasSetLayoutOnce;
+CGRect referenceFrame;
 
 %hook SBFLockScreenDateView
 
 -(CGRect)frame {
 	CGRect r = %orig;
-	NSLog(@"[Roomy] Original frame is %@", NSStringFromCGRect(r));
-	CGRect adjustedFrame = CGRectMake(r.origin.x, r.origin.y/3, r.size.width, r.size.height);
 
-	return adjustedFrame;
+	return CGRectMake(r.origin.x, 20, r.size.width, r.size.height);
 }
 -(void)setFrame:(CGRect)frame {
 	CGRect r = frame;
-	NSLog(@"[Roomy] Original frame is %@", NSStringFromCGRect(frame));
-	CGRect adjustedFrame = CGRectMake(r.origin.x, r.origin.y/3, r.size.width, r.size.height);
-	%orig(adjustedFrame);
-}
 
+	NSLog(@"[Roomy] Clock - Original frame is %@", NSStringFromCGRect(frame));
+
+	%orig(CGRectMake(r.origin.x, 20, r.size.width, r.size.height));
+}
 %end
 
 %hook _UIGlintyStringView

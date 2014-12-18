@@ -3,7 +3,7 @@ include theos/makefiles/common.mk
 
 TWEAK_NAME = Roomy
 Roomy_FILES = Tweak.xm
-Roomy_FRAMEWORKS = UIKit
+Roomy_FRAMEWORKS = UIKit CoreGraphics
 Roomy_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/tweak.mk
